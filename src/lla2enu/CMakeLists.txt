@@ -15,10 +15,9 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  sensor_msgs
+  enu_msgs
   message_filters
   nav_msgs
-  enu_msgs
 )
 
 
@@ -80,10 +79,11 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msg
-# )
+ generate_messages(
+   DEPENDENCIES
+   std_msgs
+   enu_msgs
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -164,12 +164,12 @@ include_directories(
 #   ${catkin_LIBRARIES}
 # )
 
-add_executable(lla2enu src/main.cpp)
-target_link_libraries(lla2enu ${catkin_LIBRARIES})
+add_executable(init_pose src/main.cpp)
+target_link_libraries(init_pose ${catkin_LIBRARIES})
 
-target_sources(lla2enu PRIVATE
+target_sources(init_pose PRIVATE
         ./src/converter.cpp
-        ./src/assistor.cpp
+#        ./src/assistor.cpp
 )
 
 

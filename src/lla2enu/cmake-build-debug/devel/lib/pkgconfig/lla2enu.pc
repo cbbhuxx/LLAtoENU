@@ -1,0 +1,8 @@
+prefix=/home/project/cbbhuxx_file/LLAtoENU/src/lla2enu/cmake-build-debug/devel
+
+Name: lla2enu
+Description: Description of lla2enu
+Version: 0.0.0
+Cflags: -I/home/project/cbbhuxx_file/LLAtoENU/src/lla2enu/include
+Libs: -L${prefix}/lib -llla2enu
+Requires: roscpp rospy std_msgs enu_msgs

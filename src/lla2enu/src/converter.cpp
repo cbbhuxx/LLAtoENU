@@ -18,7 +18,7 @@ float* converter::lla2xyz(float lon, float lat, float alt)
     LAT = lat / 180.0 * PI;
 
     e2 = (pow(a,2)- pow(b,2)) / pow(a,2);
-    N = a / sqrt(1 - e2 * sin(LAT) * sin(LON));
+    N = a / sqrt(1 - e2 * sin(LAT) * sin(LAT));
     arr[0] = (N + alt) * cos(LAT) * cos(LON);
     arr[1] = (N + alt) * cos(LAT) * sin(LON);
     arr[2] = (N * (1 - e2) + alt) * sin(LAT);
@@ -41,8 +41,12 @@ float* converter::xyz2enu(float x1, float y1, float z1, float x2, float y2, floa
 float* converter::lla2enu(const sensor_msgs::NavSatFix& gps)
 {
     float* p0 = lla2xyz(lon0,lat0,alt0);
+    float x0,y0,z0,x,y,z;
+    x0 = p0[0];
+    y0 = p0[1];
+    z0 = p0[2];
     float* p1 = lla2xyz(gps.longitude,gps.latitude,gps.altitude);
-    float* p = xyz2enu(p0[0], p0[1], p0[2], p1[0], p1[1], p1[2]);
+    float* p = xyz2enu(x0, y0, z0, p1[0], p1[1], p1[2]);
 
     return p;
 }

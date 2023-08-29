@@ -5,7 +5,7 @@
 #ifndef LLA2ENU_CONVERTER_H
 #define LLA2ENU_CONVERTER_H
 
-#include <math.h>
+#include <cmath>
 #include <sensor_msgs/NavSatFix.h>
 
 #define PI 3.1415926
